@@ -22,6 +22,8 @@ $ perl cljs.pl perl
 
 use WWW::Mechanize();
 use Mojo::DOM58;
+use Term::ANSIColor;
+
 use 5.26.3;
 
 use warnings;
@@ -48,29 +50,42 @@ for my $mylinks ( @links ) {
     if ( defined($mylinks->text) && $mylinks->text =~ /$search/i ) {
         print "\n";
         say "-" x 80;
+        print color( 'bright_blue' );
         say $mylinks->[0];
+        print color( 'reset' );
 
         $mech->follow_link( url_regex => qr/$search/i );
 
+        print "\n";
+        print color( 'bright_green' );
         say $mech->title();
+        print color( 'reset' );
 
         my $dom = Mojo::DOM58->new( $mech->content() );
 
         if ( defined( $dom->at('#postingbody') ) ) {
+            print color( 'white' );
             say $dom->at('#postingbody')->text . "\n";
+            print color( 'reset' );
         }
 
         # COMPENSATION
         if ( defined( $dom->at('p.attrgroup > span') ) ) {
+            print color( 'magenta' );
             print $dom->at('p.attrgroup > span')->text . " ";
+            print color( 'reset' );
         }
         if ( defined( $dom->at('p.attrgroup > span > b') ) ) {
+            print color( 'bright_red' );
             print $dom->at('p.attrgroup > span > b')->text . "\n";
+            print color( 'reset' );
         }
 
         # EMPLOYMENT TYPE
         if ( defined( $dom->at('p.attrgroup > span ~ span') ) ) {
+            print color( 'cyan' );
             print $dom->at('p.attrgroup > span ~ span')->text . " ";
+            print color( 'reset' );
         }
         if ( defined( $dom->at('p.attrgroup >span ~ span > b') ) ) {
             print $dom->at('p.attrgroup > span ~ span > b')->text . "\n";
@@ -78,7 +93,9 @@ for my $mylinks ( @links ) {
 
         # FINAL
         if ( defined( $dom->at('p.attrgroup > span ~ span ~ span') ) ) {
+            print color( 'cyan' );
             print $dom->at('p.attrgroup > span ~ span ~ span')->text . "\n";
+            print color( 'reset' );
         }
         
         say "-" x 80;
