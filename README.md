@@ -1,6 +1,6 @@
 # Super Simple Craigslist Job Search
 
-A work in progress
+A work in progress, very basic implementation.
 
 ### Current Usage:
 
