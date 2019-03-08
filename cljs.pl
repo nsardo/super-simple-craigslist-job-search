@@ -32,7 +32,7 @@ use strict;
 my $mech = WWW::Mechanize->new();
 
 #$mech->get( "https://portland.craigslist.org/d/skilled-trades-artisan/search/trd" );
-$mech->get("https://portland.craigslist.org/d/web-html-info-design/search/web");
+$mech->get( "https://portland.craigslist.org/d/web-html-info-design/search/web" );
 
 my $search = $ARGV[0];
 
@@ -59,38 +59,38 @@ for my $mylinks (@links) {
 
         my $dom = Mojo::DOM58->new( $mech->content() );
 
-        if ( defined( $dom->at('#postingbody') ) ) {
+        if ( defined( $dom->at( '#postingbody' ) )) {
             print color( 'white' );
-            say $dom->at('#postingbody')->text . "\n";
+            say $dom->at( '#postingbody' )->text . "\n";
             print color( 'reset' );
         }
 
         # COMPENSATION
-        if ( defined( $dom->at('p.attrgroup > span') ) ) {
+        if ( defined( $dom->at( 'p.attrgroup > span' ) )) {
             print color( 'magenta' );
-            print $dom->at('p.attrgroup > span')->text . " ";
+            print $dom->at( 'p.attrgroup > span' )->text . " ";
             print color( 'reset' );
         }
-        if ( defined( $dom->at('p.attrgroup > span > b') ) ) {
+        if ( defined( $dom->at( 'p.attrgroup > span > b' ) )) {
             print color( 'bright_red' );
-            print $dom->at('p.attrgroup > span > b')->text . "\n";
+            print $dom->at( 'p.attrgroup > span > b' )->text . "\n";
             print color( 'reset' );
         }
 
         # EMPLOYMENT TYPE
-        if ( defined( $dom->at('p.attrgroup > span ~ span') ) ) {
+        if ( defined( $dom->at( 'p.attrgroup > span ~ span' ) )) {
             print color( 'cyan' );
-            print $dom->at('p.attrgroup > span ~ span')->text . " ";
+            print $dom->at( 'p.attrgroup > span ~ span' )->text . " ";
             print color( 'reset' );
         }
-        if ( defined( $dom->at('p.attrgroup >span ~ span > b') ) ) {
-            print $dom->at('p.attrgroup > span ~ span > b')->text . "\n";
+        if ( defined( $dom->at( 'p.attrgroup >span ~ span > b' ) )) {
+            print $dom->at( 'p.attrgroup > span ~ span > b' )->text . "\n";
         }
 
         # FINAL
-        if ( defined( $dom->at('p.attrgroup > span ~ span ~ span') ) ) {
+        if ( defined( $dom->at( 'p.attrgroup > span ~ span ~ span' ) )) {
             print color( 'cyan' );
-            print $dom->at('p.attrgroup > span ~ span ~ span')->text . "\n";
+            print $dom->at( 'p.attrgroup > span ~ span ~ span' )->text . "\n";
             print color( 'reset' );
         }
         
