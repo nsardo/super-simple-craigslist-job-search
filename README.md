@@ -9,4 +9,4 @@ Replace the url on line 23 with your own. Then to search for titles that include
 ```
 $ perl cljs.pl perl
 ```
-![Example Screen Shot](./ss.png)
+![Example Screen Shot](./ss.PNG)
