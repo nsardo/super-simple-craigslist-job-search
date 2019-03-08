@@ -1,4 +1,4 @@
-#! /usr/bin/perl
+#!/usr/bin/perl
 
 =pod
 
@@ -29,11 +29,6 @@ use 5.26.3;
 use warnings;
 use strict;
 
-###
-# TODO:
-# Print in color
-###
-
 my $mech = WWW::Mechanize->new();
 
 #$mech->get( "https://portland.craigslist.org/d/skilled-trades-artisan/search/trd" );
@@ -41,14 +36,13 @@ $mech->get("https://portland.craigslist.org/d/web-html-info-design/search/web");
 
 my $search = $ARGV[0];
 
-print "\n";
-say "Search for: $search\n\n";
+print "\n\n";
+say "Search for: $search";
 
 my @links = $mech->find_all_links();
 
 for my $mylinks ( @links ) {
     if ( defined($mylinks->text) && $mylinks->text =~ /$search/i ) {
-        print "\n";
         say "-" x 80;
         print color( 'bright_blue' );
         say $mylinks->[0];
