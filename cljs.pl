@@ -1,11 +1,24 @@
 #! /usr/bin/perl
 
-###
-# Super Simple Craigslist Minimal Job Search
-# EXAMPLE CODE
-# WORK IN PROGRESS
-# @author Nicholas Sardo <gcc.programmer@gmail.com>
-###
+=pod
+
+=head1 AUTHOR
+
+Nicholas Sardo - L<https://www.linkedin.com/in/nicksardo/>
+
+=head1 DESCRIPTION
+
+Super Simple Craigslist Minimal Job Search
+EXAMPLE CODE
+WORK IN PROGRESS
+
+Usage:
+To search the craigslist job board of interest in your city for a specific keyword, go to craigslist for your city and click on the board of interest. Example: web/info design. Copy that url.
+Replace the url on line 23 with your own. Then to search for titles that include the word "perl" (not case sensitive)...
+
+$ perl cljs.pl perl
+
+=cut
 
 use WWW::Mechanize();
 use Mojo::DOM58;
